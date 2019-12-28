@@ -85,6 +85,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Canon.cs" />
     <Compile Include="Assets\Scripts\SelectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
