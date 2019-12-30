@@ -10,6 +10,7 @@ public class PatrullaZombie : MonoBehaviour
     UnityEngine.AI.NavMeshAgent agent;
     public GameObject player;
     public bool perseguir;
+    public GameObject ojos;
 
     void Start()
     {
@@ -44,6 +45,10 @@ public class PatrullaZombie : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
+        if (col.gameObject.tag == "Proyectil") {
+        
+            ojos.SetActive(false);
+        }
         if (col.gameObject.tag == "Player") {
             col.gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             col.gameObject.GetComponent<Rigidbody>().isKinematic = false;

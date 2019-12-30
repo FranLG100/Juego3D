@@ -19,7 +19,7 @@ public class Canon : MonoBehaviour {
             proyectil.transform.position = origen.position;
             Rigidbody rb = proyectil.GetComponent<Rigidbody>();
             //rb.velocity=Camera.main.transform.forward * 30;
-            rb.AddForce(Camera.main.transform.forward * 20000);
+            rb.AddForce(Camera.main.transform.forward * 30000);
         }
 	}
 }

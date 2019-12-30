@@ -34,6 +34,7 @@ public class Bala : MonoBehaviour {
             col.gameObject.GetComponent<PatrullaZombie>().enabled = false;
             col.gameObject.GetComponent<Animator>().enabled = false;
             //col.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            //col.gameObject.GetComponent<BoxCollider>().enabled = false;
             col.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         }
     }
