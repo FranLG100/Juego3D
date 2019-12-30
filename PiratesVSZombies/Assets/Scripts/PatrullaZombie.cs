@@ -34,6 +34,21 @@ public class PatrullaZombie : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Proyectil") { 
+            perseguir = true;
+            Debug.Log("Enemigo avistado");
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player") {
+            col.gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+            col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
 
     void Update()
     {
