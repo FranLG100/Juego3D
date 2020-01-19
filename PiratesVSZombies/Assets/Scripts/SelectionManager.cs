@@ -35,7 +35,15 @@ public class SelectionManager : MonoBehaviour
                     //newMaterial = defaultMaterial;
                     renderSeleccion.material.SetColor("_EmissionColor", new Color(0.2f,0.2f,0.2f,1));
                     if (Input.GetKeyDown(KeyCode.E))
+                    {
                         Debug.Log(hit.collider.gameObject.name);
+                        if (hit.collider.gameObject.name == "Tesoro")
+                        {
+                            Debug.Log("HAS GANADO");
+                            hit.collider.gameObject.GetComponent<Animator>().enabled = true;
+                        }
+                            
+                    }
                 }
 
                 _seleccion = seleccion;
