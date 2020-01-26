@@ -7,9 +7,19 @@ public class SelectionManager : MonoBehaviour
     public Material defaultMaterial;
     public Material newMaterial;
     private Transform _seleccion;
+    public float timer = 0;
+    public bool preparandoFinal = false;
 
     private void Update()
     {
+
+        if (preparandoFinal) {
+            timer += Time.deltaTime;
+            if (timer > 6)
+            {
+                Application.LoadLevel("MenuPrincipal");
+            }
+        }
         if (_seleccion != null)
         {
             var selectionRenderer = _seleccion.GetComponent<Renderer>();
@@ -41,6 +51,7 @@ public class SelectionManager : MonoBehaviour
                         {
                             Debug.Log("HAS GANADO");
                             hit.collider.gameObject.GetComponent<Animator>().enabled = true;
+                            preparandoFinal = true;
                         }
                             
                     }

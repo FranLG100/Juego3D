@@ -6,7 +6,12 @@ public class Bala : MonoBehaviour {
 
     bool activo = true;
     public float timer = 0;
-	// Use this for initialization
+    // Use this for initialization
+    public static int nZombies = 0;
+    public int limite=2;
+    GameObject tesoro;
+    bool cofreSinColocar = true;
+
 	void Start () {
 		
 	}
@@ -36,6 +41,19 @@ public class Bala : MonoBehaviour {
             //col.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             //col.gameObject.GetComponent<BoxCollider>().enabled = false;
             col.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            nZombies++;
+            Debug.Log("Zombies abatidos: " + nZombies);
+            col.gameObject.tag = "Abatido";
+
+            if (nZombies >= limite && cofreSinColocar)
+            {
+                
+                tesoro = GameObject.Find("Tesoro");
+                tesoro.GetComponent<Cofre>().colocarCofre();
+                Debug.Log("Ha funcionado");
+                cofreSinColocar = false;
+            }
+
         }
     }
 }

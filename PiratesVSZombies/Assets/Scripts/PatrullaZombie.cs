@@ -11,6 +11,8 @@ public class PatrullaZombie : MonoBehaviour
     public GameObject player;
     public bool perseguir;
     public GameObject ojos;
+    public float timer=0;
+    public bool preparandoFinal = false;
 
     void Start()
     {
@@ -49,14 +51,25 @@ public class PatrullaZombie : MonoBehaviour
         
             ojos.SetActive(false);
         }
-        if (col.gameObject.tag == "Player") {
+        if (col.gameObject.tag == "Player" && ojos.active) {
             col.gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             col.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            col.gameObject.GetComponentInChildren<Canon>().enabled = false;
+            preparandoFinal = true;
+            Debug.Log("MUERTO");
         }
     }
 
     void Update()
     {
+        if (preparandoFinal)
+        {
+            timer += Time.deltaTime;
+            if (timer > 6)
+            {
+                Application.LoadLevel("MenuPrincipal");
+            }
+        }
         if (perseguir)
             perseguirJugador();
         else
