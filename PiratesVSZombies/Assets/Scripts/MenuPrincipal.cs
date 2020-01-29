@@ -7,13 +7,13 @@ public class MenuPrincipal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update () {     
+    }
 
     public void IniciarJuego()
     {

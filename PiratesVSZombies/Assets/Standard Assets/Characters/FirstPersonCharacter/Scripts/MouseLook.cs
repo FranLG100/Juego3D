@@ -74,7 +74,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void InternalLockUpdate()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
+            if(Input.GetKeyUp(KeyCode.Escape) || (Input.GetKeyUp(KeyCode.P) && Time.timeScale==0))
             {
                 m_cursorIsLocked = false;
             }

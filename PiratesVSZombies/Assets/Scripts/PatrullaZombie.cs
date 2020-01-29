@@ -13,12 +13,17 @@ public class PatrullaZombie : MonoBehaviour
     public GameObject ojos;
     public float timer=0;
     public bool preparandoFinal = false;
+    public float velocidadPersecucion;
+    
 
     void Start()
     {
+        player=GameObject.Find("Jugador");
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.autoBraking = false;
-        SiguientePunto();
+        if (!perseguir) ;
+            SiguientePunto();
+       
     }
 
     void SiguientePunto()
@@ -32,7 +37,8 @@ public class PatrullaZombie : MonoBehaviour
     }
 
     void perseguirJugador() {
-
+        agent.speed = 10f;
+        agent.acceleration = 30;
         agent.destination = player.transform.position;
 
     }
@@ -79,5 +85,8 @@ public class PatrullaZombie : MonoBehaviour
                 SiguientePunto();
             }
         }
+
+        
+
     }
 }

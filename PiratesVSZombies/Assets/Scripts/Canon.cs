@@ -6,9 +6,10 @@ public class Canon : MonoBehaviour {
 
     public GameObject bala;
     public Transform origen;
+    public float fuerzaCanon = 30000;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -19,7 +20,7 @@ public class Canon : MonoBehaviour {
             proyectil.transform.position = origen.position;
             Rigidbody rb = proyectil.GetComponent<Rigidbody>();
             //rb.velocity=Camera.main.transform.forward * 30;
-            rb.AddForce(Camera.main.transform.forward * 30000);
+            rb.AddForce(Camera.main.transform.forward * fuerzaCanon);
         }
 	}
 }
