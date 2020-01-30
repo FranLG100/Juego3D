@@ -10,15 +10,24 @@ public class Manager : MonoBehaviour {
     public GameObject menuPausa;
     public static int score = 0;
     public GameObject puntuacion;
+    public GameObject record;
+    int maxScore;
 	// Use this for initialization
 	void Start () {
+        maxScore=PlayerPrefs.GetInt("record");
         score = 0;
-	}
+        record.GetComponent<UnityEngine.UI.Text>().text = maxScore.ToString();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         puntuacion.GetComponent<UnityEngine.UI.Text>().text = score.ToString();
+        if (score > maxScore) {
+            maxScore = score;
+            record.GetComponent<UnityEngine.UI.Text>().text = maxScore.ToString();
+            PlayerPrefs.SetInt("record", maxScore);
+        }
 
         if (Input.GetKeyDown(KeyCode.P)) {
             pausa = !pausa;

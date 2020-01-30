@@ -9,6 +9,7 @@ public class SelectionManager : MonoBehaviour
     private Transform _seleccion;
     public float timer = 0;
     public bool preparandoFinal = false;
+    GameObject[] enemigos;
 
     private void Update()
     {
@@ -50,6 +51,12 @@ public class SelectionManager : MonoBehaviour
                         if (hit.collider.gameObject.name == "Tesoro")
                         {
                             Debug.Log("HAS GANADO");
+                            GameObject.Find("Spawns").GetComponent<Spawner>().enabled = false;
+                            enemigos = GameObject.FindGameObjectsWithTag("Enemigo");
+                            for (int i = 0; i < enemigos.Length; i++)
+                            {
+                                Destroy(enemigos[i]);
+                            }
                             hit.collider.gameObject.GetComponent<Animator>().enabled = true;
                             preparandoFinal = true;
                         }
